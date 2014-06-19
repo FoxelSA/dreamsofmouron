@@ -1,7 +1,7 @@
 
 ## Website of the Dreams of Mouron project
 
-The "Dreams of Mouron" project is a unique collaboration between Swiss artist
+The "Dreams of Mouron" <[http://dreamsofmouron.com](http://dreamsofmouron.com)> project is a unique collaboration between Swiss artist
 Didier Mouron and American film composer Don Harper.
 
 ### Copyright
