@@ -1,59 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-Copyright (C) 2013 Foxel SA
-Developed by Oleg Lavrovsky
-License terms (AGPL 3.0) specified in LICENSE file.
+
+/**
+ * Website of the Dreams of Mouron project.
+ *
+ * Copyright (c) 2013-2014 FOXEL SA - http://foxel.ch
+ * Please read <http://foxel.ch/license> for more information.
+ *
+ *
+ * Author(s):
+ *
+ *      Oleg Lavrovsky
+ *
+ *
+ * Contributor(s):
+ *
+ *      Alexandre Kraft <a.kraft@foxel.ch>
+ *
+ *
+ * This file is part of the FOXEL project <http://foxel.ch>.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ *
+ * Additional Terms:
+ *
+ *      You are required to preserve legal notices and author attributions in
+ *      that material or in the Appropriate Legal Notices displayed by works
+ *      containing it.
+ *
+ *      You are required to attribute the work as explained in the "Usage and
+ *      Attribution" section of <http://foxel.ch/license>.
+ */
+
 -->
-	<head>
-		<title>The Dream of Mouron</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" href="index.css" type="text/css">
-	</head>
-	<body>
-		<div id="loading">
-			<div id="title">The Dream of Mouron</div>
-			<div id="credit">Don Harper Music &amp; Didier Mouron Art</div>
-			<div id="progress">
-				<div><b id="pc">&nbsp;</b></div>
-				<span id="pctx">loading 0%</span>
-			</div>
-		</div>
-		<div id="controls" class="hide">
-			<button id="prev">&#8592;</button>
-			<button id="down">&#8675;</button>
-			<button id="next">&#8594;</button>
-		</div>
-		<div id="dialog-overlay" class="modal"></div>
-		<div id="dialog-box" class="modal">
-			<button class="close">&times;</button>
-			<div class="dialog-content">
-				<div id="dialog-message"></div>
-			</div>
-		</div>
-		<div id="container"></div>
+    <head>
+        <title>Dreams of Mouron</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <link rel="stylesheet" href="index.css" type="text/css">
+    </head>
+    <body>
+        <div id="loading">
+            <div id="title">Dreams of Mouron</div>
+            <div id="credit">Music by Don Harper, Paintings by Didier Mouron</div>
+            <div id="progress">
+                <div><b id="pc">&nbsp;</b></div>
+                <span id="pctx">Loading 0%<span style="position:relative;top:-25px;display:block;font-size:12px;">Please use the latest version of Chromium, Google Chrome or Firefox.</span></span>
+            </div>
+        </div>
+        <div id="controls" class="hide">
+            <button id="prev">&#8592;</button>
+            <button id="down">&#8675;</button>
+            <button id="next">&#8594;</button>
+        </div>
+        <div id="dialog-overlay" class="modal"></div>
+        <div id="dialog-box" class="modal">
+            <button class="close">&times;</button>
+            <div class="dialog-content">
+                <div id="dialog-message"></div>
+            </div>
+        </div>
+        <div id="container"></div>
 
-		<div id="website">
-		<!-- Any content to appear below the panorama goes here -->
+        <div id="website">
+        <!-- Any content to appear below the panorama goes here -->
 
-<h1>Hello world</h1>
+        <div style="width:1000px;margin:0 auto;">
+            <div style="float:left;width:500px;">
+                <p><img src="img/Don-Harper_Didier-Mouron.png" width="498" height="240" alt="Don Harper and Didier Mouron" /></p>
+                <p style="text-align:right;padding-top:45px;padding-right:50px;color:#777;font-size:12px;">
+                    Official websites:
+                </p>
+                <p style="text-align:right;padding-right:50px;font-size:12px;">
+                    <a href="http://donharper.com/" target="_blank" style="color:#777;">http://donharper.com</a>
+                    <br />
+                    <a href="http://didiermouron.com/" target="_blank" style="color:#777;">http://didiermouron.com</a>
+                </p>
+            </div>
+            <div style="float:right;width:500px;">
 
-<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet metus cursus, fermentum eros a, pulvinar erat. Donec sed velit molestie, porttitor mauris at, pulvinar turpis. Integer tristique magna vel tortor fermentum, eget vehicula justo suscipit. In dignissim cursus leo nec feugiat. Duis nec imperdiet turpis, et viverra tortor. Nullam a iaculis augue. Quisque ut tristique ante, id aliquam sem. Etiam lobortis accumsan leo, at varius ante tincidunt in.</p>
+            <h2 style="color:#fff;">The “Dreams of Mouron” project is a unique collaboration between Swiss artist Didier Mouron and American film composer Don Harper.</h2>
+            <p style="color:#fff;text-align:justify;">The live music with art performances combine the intricate art of Mouron in-the-round with a live chamber orchestra that surrounds the audience and immerses them in a continuing kaleidoscope of musical themes and textures.</p>
+            <p style="color:#fff;text-align:justify;">In Don Harper’s musical creation, each musician has choice of placement and variation of the theme and motif, which is inspired by each piece of art, thus creating a unique musical “story” in every performance. As the audience is free to move about the gallery, each geographic location provides a new perspective in sight and sound.</p>
+            <p style="color:#fff;text-align:justify;padding-bottom:30px;">Inspired by the Didier Mouron pieces, five paintings have been carefully selected for this unique project. This website is a demonstration of how these separate musical inspirations combine in various ways as you move through Didier Mouron's gallery.  "The Dreams of Mouron"  project was created as a live performance piece, but we hope that this virtual representation gives you an sense of  the possibilities. </p>
 
-<p>Praesent eu est varius, cursus ipsum sit amet, suscipit quam. Nunc tincidunt pretium sem non dignissim. Sed hendrerit, leo eu tristique sodales, libero risus volutpat magna, quis auctor nunc libero eget enim. Quisque quis enim est. Morbi nec dictum magna, sit amet condimentum lacus. Donec nec risus ut dui commodo aliquet. Fusce vehicula commodo augue, eu dictum ipsum laoreet ut. Donec semper ante vel magna porta dictum. Donec eget massa in arcu rutrum semper. Ut ornare sodales pretium. Donec in justo sit amet tortor iaculis porttitor.</p>
+            </div>
 
-<p>Vestibulum tincidunt lobortis erat, laoreet convallis risus interdum eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nullam vulputate justo vel condimentum condimentum. Maecenas nibh ligula, gravida et urna sed, malesuada varius nisl. Donec quis fermentum ante. Suspendisse eget varius dolor. Ut vitae turpis quis mauris pulvinar ornare sed eu justo. Curabitur laoreet nisi vitae est ullamcorper, non volutpat risus ornare. Donec vitae tellus suscipit, volutpat odio ullamcorper, varius mi.</p>
+        </div>
 
-		<!-- end website content -->
-		</div>
+        <!-- end website content -->
+        </div>
 
-		<script src="lib/three.min.js"></script>
-		<script src="lib/tween.min.js"></script>
-		<script src="lib/zepto.min.js"></script>
+        <div id="welcome">
+            <img src="img/DidierMouron-Theme-CC_BY-SA.jpg" width="500" height="283" alt="" style="position:relative;top:26px;" />
+            <div class="details">
+                <h3 style="padding-right:35px;">The “Dreams of Mouron” project is a unique collaboration between Swiss artist Didier Mouron and American film composer Don Harper.</h3>
+                <p style="padding-top:10px;padding-right:35px;">
+                    Inside Didier Mouron's gallery, discover the 5 paintings on their totems and the associated themes.
+                </p>
+                <ul style="padding:0;margin:0;padding-top:25px;font-weight:400;padding-right:35px;">
+                    <li>Click on the paintings to see additional details.</li>
+                    <li style="padding-top:10px;">Click and drag your mouse:<br />- around to move the panorama;<br />- above to get more information about the project.</li>
+                </ul>
+                <!--
+                <p style="padding-top:35px;font-weight:400;">
+                    <a href="" id="welplay" style="background-color:#555;color:#fff;padding:15px;text-decoration:none;margin-right:15px;">View the Gallery</a>
+                    <a href="" id="welabout" style="background-color:#555;color:#fff;padding:15px;text-decoration:none;margin-right:15px;">About the Project</a>
+                </p>
+                -->
+            </div>
+        </div>
 
-		<script src="pano.js"></script>
-		<script src="config.js"></script>
-		<script>PANO.main();</script>
-	</body>
+        <div id="paint1" class="dataset">
+            <img src="img/DidierMouron-L_Argo-CC_BY-SA.jpg" width="500" height="410" alt="L'Argo, by Didier Mouron" />
+            <div class="details">
+                <h3>L'Argo</h3>
+                <p>Music by Don Harper<br />Painting by Didier Mouron</p>
+            </div>
+        </div>
+
+        <div id="paint2" class="dataset">
+            <img src="img/DidierMouron-Jesrad-CC_BY-SA.jpg" width="500" height="373" alt="Jesrad, by Didier Mouron" />
+            <div class="details">
+                <h3>Jesrad</h3>
+                <p>Music by Don Harper<br />Painting by Didier Mouron</p>
+            </div>
+        </div>
+
+        <div id="paint3" class="dataset">
+            <img src="img/DidierMouron-Combien_etaient_ils-CC_BY-SA.jpg" width="500" height="305" alt="Combien étaient-ils ?, by Didier Mouron" />
+            <div class="details">
+                <h3>Combien étaient-ils ?</h3>
+                <p>Music by Don Harper<br />Painting by Didier Mouron</p>
+            </div>
+        </div>
+
+        <div id="paint4" class="dataset">
+            <img src="img/DidierMouron-Chronos_II-CC_BY-SA.jpg" width="500" height="315" alt="Chronos II, by Didier Mouron" />
+            <div class="details">
+                <h3>Chronos II</h3>
+                <p>Music by Don Harper<br />Painting by Didier Mouron</p>
+            </div>
+        </div>
+
+        <div id="paint5" class="dataset">
+            <img src="img/DidierMouron-La_Chambre-CC_BY-SA.jpg" width="500" height="388" alt="La Chambre, by Didier Mouron" />
+            <div class="details">
+                <h3>La Chambre</h3>
+                <p>Music by Don Harper<br />Painting by Didier Mouron</p>
+            </div>
+        </div>
+
+
+        <script src="lib/three.min.js"></script>
+        <script src="lib/tween.min.js"></script>
+        <script src="lib/zepto.min.js"></script>
+
+        <script src="pano.js"></script>
+        <script src="config.js"></script>
+        <script>PANO.main();</script>
+    </body>
 </html>
