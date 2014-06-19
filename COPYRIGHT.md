@@ -39,13 +39,13 @@ notices.
 
 
 *   __Music__<br />
-    Copyright (c) 2013-2014 Don L. Harper - http://donharper.com
+    Copyright (c) 2013-2014 Don L. Harper - http://donharper.com<br />
     Distributed under the terms of the
     [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/)
     (CC BY-SA) license.
 
 *   __Paintings__<br />
-    Copyright (c) 2013-2014 Didier Mouron - http://totm.ch
+    Copyright (c) 2013-2014 Didier Mouron - http://totm.ch<br />
     Distributed under the terms of the
     [Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/)
     (CC BY-SA) license.
