@@ -13,6 +13,7 @@
  * Contributor(s):
  *
  *      Alexandre Kraft <a.kraft@foxel.ch>
+ *      Luc Deschenaux <l.deschenaux@foxel.ch>
  *
  *
  * This file is part of the FOXEL project <http://foxel.ch>.
@@ -105,7 +106,16 @@ function initAura() {
       null
     );
     if (!AudioContext) {
-      throw new Error("AudioContext not supported!");
+      //throw new Error("AudioContext not supported!");
+      loadProgress(1);
+      alert("AudioContext not supported! Sound disabled !");
+      var progress=setInterval(function(){
+        loadProgress(1);
+        if (loadingCount==loading) {
+          clearInterval(progress);
+        }
+      },500);
+      return;
     }
 
     a.context = new AudioContext();
@@ -143,6 +153,10 @@ function loadBuffer(soundFileName, callback) {
 }
 
 function loadSound(soundFileName) {
+    if (!AudioContext) {
+      return;
+    }
+
     var ctx = audio.context;
 
     var sound = {};
@@ -168,6 +182,10 @@ function loadSound(soundFileName) {
 }
 
 function loadPlainSound(soundFileName, soundVolume) {
+    if (!AudioContext) {
+      return {};
+    }
+
     var ctx = audio.context;
 
     var sound = {};
@@ -213,7 +231,9 @@ function setPosition(object, soundObject, x, y, z) {
 
     var dx = q.x-px, dy = q.y-py, dz = q.z-pz;
 
-    soundObject.setPosition(q.x, q.y, q.z);
+    if (AudioContext) {
+      soundObject.setPosition(q.x, q.y, q.z);
+    }
 
 }
 
@@ -227,7 +247,9 @@ function setOrientation(object, soundObject, x, y, z) {
     vec.applyMatrix3(m);
     vec.normalize();
 
-    soundObject.setOrientation(vec.x, vec.y, vec.z);
+    if (AudioContext) {
+      soundObject.setOrientation(vec.x, vec.y, vec.z);
+    }
 
     m.n14 = mx;
     m.n24 = my;
@@ -236,7 +258,7 @@ function setOrientation(object, soundObject, x, y, z) {
 
 function setListenerPosition(object, x, y, z) {
 
-    setPosition(object, audio.context.listener, x, y, z);
+    setPosition(object, AudioContext?audio.context.listener:null , x, y, z);
 
     var m = object.matrix;
     var mx = m.n14, my = m.n24, mz = m.n34;
@@ -252,7 +274,9 @@ function setListenerPosition(object, x, y, z) {
     //m.multiplyVector3(up);
     up.normalize();
 
-    audio.context.listener.setOrientation(vec.x, vec.y, vec.z, up.x, up.y, up.z);
+    if (AudioContext) {
+      audio.context.listener.setOrientation(vec.x, vec.y, vec.z, up.x, up.y, up.z);
+    }
 
     m.n14 = mx;
     m.n24 = my;
@@ -380,10 +404,12 @@ function animate() {
     else if (loading == loadingDone) { // run once
         $('#loading').hide();
         $('#controls').removeClass('hide');
-        var ctx = audio.context;
-        orbs.forEach(function(c) {
-            c.sound.source.start(ctx.currentTime + 0.020);
-        });
+        if (AudioContext) {
+          var ctx = audio.context;
+          orbs.forEach(function(c) {
+              c.sound.source.start(ctx.currentTime + 0.020);
+          });
+        }
         loading++;
     }
 
@@ -490,10 +516,10 @@ function updateAura() {
 
         // Fade distant orbs
         if (dist > maxdist * 10) {
-            setPosition(c, c.sound.panner, 11111, 0, 0);
+            setPosition(c, c.sound?c.sound.panner:null , 11111, 0, 0);
         } else {
             var offset = Math.pow(( theta - c.orient )*5,3);
-            setPosition(c, c.sound.panner, cx, cy, cz + offset);
+            setPosition(c, c.sound?c.sound.panner:null, cx, cy, cz + offset);
         }
 
         if (dist <= maxdist) {
