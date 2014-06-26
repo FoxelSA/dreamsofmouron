@@ -4,12 +4,14 @@
 The "Dreams of Mouron" <[http://dreamsofmouron.com](http://dreamsofmouron.com)> project is a unique collaboration between Swiss artist
 Didier Mouron and American film composer Don Harper.
 
+
 ### Copyright
 
 Copyright (c) 2013-2014 FOXEL SA - [http://foxel.ch](http://foxel.ch)<br />
 This program is part of the FOXEL project <[http://foxel.ch](http://foxel.ch)>.
 
 Please read the [COPYRIGHT.md](COPYRIGHT.md) file for more information.
+
 
 ### License
 
