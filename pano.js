@@ -71,6 +71,9 @@ var htmlbody = $('html, body');
 
 var isWelcome = true;
 
+var reqAnimFrame = true;
+var isFirstFrame = false;
+
 // Load configuration
 PANO.sounds.forEach(function(s) {
     if (s.length < 2)
@@ -325,6 +328,7 @@ function onWindowResize() {
     camera.updateProjectionMatrix();
 
     renderer.setSize( window.innerWidth, window.innerHeight );
+    render();
 }
 
 function onDocumentMouseDown( event ) {
@@ -351,7 +355,9 @@ function onDocumentMouseDown( event ) {
         var ix = intersects[0].object.index;
         if (soundTxt[ix]) PANO.popup(soundTxt[ix],'paint'+(ix+1));
         swingTo(ix+1);
-    }
+    } else {
+		setRequestAnimationFrame(true);
+	}
 }
 
 function onDocumentMouseMove( event ) {
@@ -364,6 +370,8 @@ function onDocumentMouseMove( event ) {
 }
 
 function onDocumentMouseUp( event ) {
+	if (!PANO.swinging)
+		setRequestAnimationFrame(false);
     isUserInteracting = false;
     scrollIsTop();
 }
@@ -398,10 +406,14 @@ function onDocumentMouseWheel( event ) {
 
 function animate() {
 
-    requestAnimationFrame(animate);
+	if (reqAnimFrame)
+		requestAnimationFrame(animate);
 
     if (loading < loadingDone) { return; }
     else if (loading == loadingDone) { // run once
+		
+		isFirstFrame = true;
+		
         $('#loading').hide();
         $('#controls').removeClass('hide');
         if (AudioContext) {
@@ -416,6 +428,17 @@ function animate() {
     TWEEN.update();
     updateAura();
     render();
+    
+    if (isFirstFrame) {
+		isFirstFrame = false;
+		setRequestAnimationFrame(false);
+	}
+}
+
+function setRequestAnimationFrame(state) {
+	reqAnimFrame = state;
+	if (reqAnimFrame)
+		requestAnimationFrame(animate);
 }
 
 function render() {
@@ -544,12 +567,17 @@ function swingTo(a) {
     if (a > soundPos.length/2 && lon <= soundPos[0]) to -= 360;
 
     PANO.swinging = true;
+    
+    setRequestAnimationFrame(true);
 
     // Start animation
     tween = new TWEEN.Tween({ lon: lon })
         .easing( TWEEN.Easing.Cubic.Out )
         .onUpdate(function () { lon = this.lon; })
         .onComplete(function() {
+			
+			setRequestAnimationFrame(false);
+			
             PANO.swinging = false;
             if (lon < 0) lon += 360;
             if (lon > 360) lon -= 360;
@@ -620,11 +648,13 @@ function initUI() {
         if (PANO.swinging) tween.stop();
         e.stopPropagation();
 
+		setRequestAnimationFrame(true);
+
         // Create a vertical tween
         tween = new TWEEN.Tween({ lat: lat })
             .easing( TWEEN.Easing.Cubic.Out )
             .onUpdate(function() { lat = this.lat; scrollPageWithLat(); })
-            .onComplete(function() { PANO.swinging = false; scrollIsTop(); });
+            .onComplete(function() { setRequestAnimationFrame(false); PANO.swinging = false; scrollIsTop(); });
 
         // Pan camera down or up
         PANO.swinging = true;
