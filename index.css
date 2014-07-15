@@ -41,6 +41,15 @@
  *      Attribution" section of <http://foxel.ch/license>.
  */
 
+a, a:link, a:visited, a:hover, a:active {
+    color:#888;
+    text-decoration:none;
+}
+a:hover, a:active {
+    color:#fff;
+    text-decoration:none;
+}
+
 body {
     background-color: #000000;
     margin: 0px;

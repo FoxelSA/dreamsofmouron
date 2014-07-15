@@ -61,7 +61,7 @@ var currentOrb = 0, swinging = false;
 var audio, mute = false;
 var loading = 0;
 
-var FLOOR_SCROLL = -10;
+var FLOOR_SCROLL = -0;
 var FLOOR_BOTTOM = -38;
 var FLOOR_FACTOR = 18;
 var FLOOR_FREEZE = FLOOR_FACTOR * (FLOOR_SCROLL - FLOOR_BOTTOM);
@@ -356,8 +356,8 @@ function onDocumentMouseDown( event ) {
         if (soundTxt[ix]) PANO.popup(soundTxt[ix],'paint'+(ix+1));
         swingTo(ix+1);
     } else {
-		setRequestAnimationFrame(true);
-	}
+        setRequestAnimationFrame(true);
+    }
 }
 
 function onDocumentMouseMove( event ) {
@@ -370,8 +370,8 @@ function onDocumentMouseMove( event ) {
 }
 
 function onDocumentMouseUp( event ) {
-	if (!PANO.swinging)
-		setRequestAnimationFrame(false);
+    if (!PANO.swinging)
+        setRequestAnimationFrame(false);
     isUserInteracting = false;
     scrollIsTop();
 }
@@ -406,14 +406,14 @@ function onDocumentMouseWheel( event ) {
 
 function animate() {
 
-	if (reqAnimFrame)
-		requestAnimationFrame(animate);
+    if (reqAnimFrame)
+        requestAnimationFrame(animate);
 
     if (loading < loadingDone) { return; }
     else if (loading == loadingDone) { // run once
-		
-		isFirstFrame = true;
-		
+
+        isFirstFrame = true;
+
         $('#loading').hide();
         $('#controls').removeClass('hide');
         if (AudioContext) {
@@ -428,17 +428,17 @@ function animate() {
     TWEEN.update();
     updateAura();
     render();
-    
+
     if (isFirstFrame) {
-		isFirstFrame = false;
-		setRequestAnimationFrame(false);
-	}
+        isFirstFrame = false;
+        setRequestAnimationFrame(false);
+    }
 }
 
 function setRequestAnimationFrame(state) {
-	reqAnimFrame = state;
-	if (reqAnimFrame)
-		requestAnimationFrame(animate);
+    reqAnimFrame = state;
+    if (reqAnimFrame)
+        requestAnimationFrame(animate);
 }
 
 function render() {
@@ -567,7 +567,7 @@ function swingTo(a) {
     if (a > soundPos.length/2 && lon <= soundPos[0]) to -= 360;
 
     PANO.swinging = true;
-    
+
     setRequestAnimationFrame(true);
 
     // Start animation
@@ -575,9 +575,9 @@ function swingTo(a) {
         .easing( TWEEN.Easing.Cubic.Out )
         .onUpdate(function () { lon = this.lon; })
         .onComplete(function() {
-			
-			setRequestAnimationFrame(false);
-			
+
+            setRequestAnimationFrame(false);
+
             PANO.swinging = false;
             if (lon < 0) lon += 360;
             if (lon > 360) lon -= 360;
@@ -648,7 +648,7 @@ function initUI() {
         if (PANO.swinging) tween.stop();
         e.stopPropagation();
 
-		setRequestAnimationFrame(true);
+        setRequestAnimationFrame(true);
 
         // Create a vertical tween
         tween = new TWEEN.Tween({ lat: lat })
