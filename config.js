@@ -89,7 +89,7 @@ PANO.helper = false;
 */
 PANO.dialogWidth = 850;
 PANO.dialogHeight = new Array();
-PANO.dialogHeight['welcome'] = 373;
+PANO.dialogHeight['welcome'] = 410;
 PANO.dialogHeight['paint1'] = 455;
 PANO.dialogHeight['paint2'] = 418;
 PANO.dialogHeight['paint3'] = 350;
