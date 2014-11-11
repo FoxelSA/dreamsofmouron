@@ -75,7 +75,7 @@ PANO.sounds = [
 ];
 
 /* Optional background source, and it's loudness from 0 to 1*/
-PANO.bgsound = [ "background.mp3" ];
+PANO.bgsound = [ "background.mp3", 0 ]; // muted by default
 
 /*
  When true, shows blue orbs ("helpers") at the sound locations,

@@ -74,6 +74,8 @@ var isWelcome = true;
 var reqAnimFrame = true;
 var isFirstFrame = false;
 
+var _bgsound = null;
+
 // Load configuration
 PANO.sounds.forEach(function(s) {
     if (s.length < 2)
@@ -195,6 +197,7 @@ function loadPlainSound(soundFileName, soundVolume) {
     sound.source = ctx.createBufferSource();
     sound.source.loop = true;
     sound.volume = ctx.createGain();
+
     if (typeof soundVolume !== 'undefined')
         sound.volume.gain.value = soundVolume;
 
@@ -207,6 +210,7 @@ function loadPlainSound(soundFileName, soundVolume) {
               sound.buffer = buffer;
               sound.source.buffer = sound.buffer;
               sound.source.start(audio.context.currentTime);
+              _bgsound = sound;
             });
     }, 250);
 
@@ -545,6 +549,12 @@ function updateAura() {
             setPosition(c, c.sound?c.sound.panner:null, cx, cy, cz + offset);
         }
 
+        // mute sound on welcome screen
+        if (isWelcome)
+            c.sound.volume.gain.value = 0;
+        else
+            c.sound.volume.gain.value = 1;
+
         if (dist <= maxdist) {
             // Determine central orb
             if (!PANO.swinging) currentOrb = i + 1;
@@ -671,8 +681,13 @@ function initUI() {
         window.removeEventListener( 'resize', onWindowResizeAdaptOverlay, false );
 
         if (isWelcome) {
+
+            // unmute sound on welcome screen
+            _bgsound.volume.gain.value = 1;
+
             isWelcome = false;
             setTimeout(function(){$('#next').trigger('mousedown');},150);
+
         }
     });
 
